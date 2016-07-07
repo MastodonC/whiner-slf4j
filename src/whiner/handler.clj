@@ -2,6 +2,7 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [clojure.core.async :as async]
             [clojure.tools.logging :as log]))
 
 (defroutes app-routes
@@ -22,6 +23,10 @@
        (do
          (quot 1 0)
          "never reached"))
+  (GET "/async" []
+       (do
+         (async/go (throw (Exception. "exception in a go block")))
+         "asynced"))
   (route/not-found "Not Found"))
 
 (defn wrap-catch-exceptions [handler]
@@ -30,5 +35,11 @@
          (catch Throwable t (log/error t)))))
 
 (def app
-  (-> (wrap-defaults app-routes site-defaults)
-      wrap-catch-exceptions))
+  (do
+    ;; https://stuartsierra.com/2015/05/27/clojure-uncaught-exceptions
+    (Thread/setDefaultUncaughtExceptionHandler
+     (reify Thread$UncaughtExceptionHandler
+       (uncaughtException [_ thread ex]
+         (log/error ex "Uncaught exception on" (.getName thread)))))
+    (-> (wrap-defaults app-routes site-defaults)
+        wrap-catch-exceptions)))

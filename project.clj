@@ -10,7 +10,8 @@
                  [ch.qos.logback/logback-classic "1.1.7"]
                  [org.slf4j/jul-to-slf4j         ~slf4j-version]
                  [org.slf4j/jcl-over-slf4j       ~slf4j-version]
-                 [org.slf4j/log4j-over-slf4j     ~slf4j-version]]
+                 [org.slf4j/log4j-over-slf4j     ~slf4j-version]
+                 [org.clojure/core.async "0.2.385"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler whiner.handler/app}
   :profiles
