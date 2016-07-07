@@ -24,5 +24,11 @@
          "never reached"))
   (route/not-found "Not Found"))
 
+(defn wrap-catch-exceptions [handler]
+  (fn [request]
+    (try (handler request)
+         (catch Throwable t (log/error t)))))
+
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (-> (wrap-defaults app-routes site-defaults)
+      wrap-catch-exceptions))
