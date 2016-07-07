@@ -14,6 +14,7 @@
                  [org.clojure/core.async "0.2.385"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler whiner.handler/app}
+  :uberjar-name "whiner-slf4j.jar"
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.0"]]}})
