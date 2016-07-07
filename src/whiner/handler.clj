@@ -40,6 +40,6 @@
     (Thread/setDefaultUncaughtExceptionHandler
      (reify Thread$UncaughtExceptionHandler
        (uncaughtException [_ thread ex]
-         (log/error ex "Uncaught exception on" (.getName thread)))))
+         (log/error ex))))
     (-> (wrap-defaults app-routes site-defaults)
         wrap-catch-exceptions)))
