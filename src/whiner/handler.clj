@@ -6,6 +6,8 @@
             [clojure.tools.logging :as log]))
 
 (defroutes app-routes
+  (GET "/" []
+       "OK")
   (GET "/info" []
        (log/info "informative message")
        "Info")
