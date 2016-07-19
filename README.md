@@ -42,6 +42,12 @@ Some of the lines in logback.xml are not necessary for all apps, it really depen
 
 Are merely designed to *reduce the noise to bearable levels*.  The default level to console is debug, but we don't need all the debug information of everything.
 
+A last, fairly important point: it's useful to distinguish which cluster/environment is logging data. This can be done by adding data to the docker log-opt in the marathon json.
+
+```
+          {"key": "log-opt", "value": "tag=staging"},
+```
+
 ## License
 
 Copyright © 2016 FIXME
