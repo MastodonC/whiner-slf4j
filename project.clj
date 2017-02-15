@@ -13,7 +13,8 @@
                  [org.slf4j/log4j-over-slf4j     ~slf4j-version]
                  [org.clojure/core.async "0.2.385"]]
   :plugins [[lein-ring "0.9.7"]]
-  :ring {:handler whiner.handler/app}
+  :ring {:handler whiner.handler/app
+         :port 3356}
   :uberjar-name "whiner-slf4j.jar"
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
