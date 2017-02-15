@@ -14,8 +14,8 @@
       "network": "BRIDGE",
       "portMappings": [
           {
-              "containerPort": 3000,
-              "hostPort": 3999,
+              "containerPort": 3356,
+              "hostPort": 3356,
               "protocol": "tcp"
           }
       ]
