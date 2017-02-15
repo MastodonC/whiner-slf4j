@@ -23,7 +23,7 @@
   },
   "id": "whiner-slf4j",
   "cpus": 0.1,
-  "mem": 128,
+  "mem": 256,
   "healthChecks": [{
         "protocol": "HTTP",
         "path": "/",
