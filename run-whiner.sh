@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /root/whiner-slf4j.jar
+java -Xmx64M -jar /root/whiner-slf4j.jar
